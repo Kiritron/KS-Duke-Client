@@ -1,6 +1,6 @@
 ### **КС Дьюк [Клиент]**
 
-##### Версия: 1.0
+##### Версия: 2.0
 ##### Описание
 Библиотека для реализации проверки обновлений для приложения.
 Поддерживается HTTP/HTTPS и SOCKET(Нужен [сервер КС Дьюк](https://bitbucket.org/kiritron/ks-diuk-server/src/master/)).
@@ -12,12 +12,12 @@ import static space.kiritron.duke_cli.httpconn.checkVersion;
 ```
 и используйте его, заполнив данные
 ```java
-checkVersion(URL, SSL_Enabled, VER_APP);
+checkVersion(URL, SSL_Verification, VER_APP);
 ```
 ```
 URL(String) - Адрес в веб-пространстве, на котором
 есть данные об обновлении
-SSL_Enabled(Boolean) - Используется ли HTTPS
+SSL_Verification(Boolean) - Необходимо ли проверять SSL сертификаты
 VER_APP(String) - Какая версия данного приложения(Необходимо для сравнения)
 ```
 В случае, если строки версий отличаются, будет выдан соотвествующий статус.
