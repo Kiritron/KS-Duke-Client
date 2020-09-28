@@ -7,7 +7,7 @@ package space.kiritron.duke_cli;
  */
 
 public class versionHandler {
-    public static boolean checkDifference(String VER_APP, String VER_FROM_SERVER) {
+    protected static boolean checkDifference(String VER_APP, String VER_FROM_SERVER) {
         if (VER_FROM_SERVER.contains(":::minor") && VER_FROM_SERVER.contains(":::major")) {
             while (VER_FROM_SERVER.contains(":::minor") && VER_FROM_SERVER.contains(":::major")) {
                 VER_FROM_SERVER = VER_FROM_SERVER.replace(":::minor", "");
@@ -25,7 +25,7 @@ public class versionHandler {
         }
     }
 
-    public static boolean checkMajorMarker(String VER_FROM_SERVER) {
+    protected static boolean checkMajorMarker(String VER_FROM_SERVER) {
         boolean MajorMarkerDetected = false;
 
         if (VER_FROM_SERVER.contains(":::major")) {
