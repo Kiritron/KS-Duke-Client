@@ -17,11 +17,13 @@
 package space.kiritron.duke_cli;
 
 /**
- * Класс с методом получения и сравнения версий через HTTP/HTTPS.
+ * Класс с методами получения и сравнения версий через HTTP/HTTPS.
  * @author Киритрон Стэйблкор
  */
 
 public class versionHandler {
+    // Осторожно! У вас может сгореть жопа от того, как я решаю задачи в данном классе!
+
     protected static boolean checkDifference(String VER_APP, String VER_FROM_SERVER) {
         if (VER_FROM_SERVER.contains(":::minor") && VER_FROM_SERVER.contains(":::major")) {
             while (VER_FROM_SERVER.contains(":::minor") && VER_FROM_SERVER.contains(":::major")) {
@@ -40,11 +42,21 @@ public class versionHandler {
         }
     }
 
-    protected static boolean checkMajorMarker(String VER_FROM_SERVER) {
+    protected static boolean checkMajorMarker(String VER_APP, String VER_FROM_SERVER) {
         boolean MajorMarkerDetected = false;
 
+        // Этот метод таким недальновидным был дальше. Это ужасно.
         if (VER_FROM_SERVER.contains(":::major")) {
-            MajorMarkerDetected = true;
+            if (VER_FROM_SERVER.contains(":::minor") && VER_FROM_SERVER.contains(":::major")) {
+                while (VER_FROM_SERVER.contains(":::minor") && VER_FROM_SERVER.contains(":::major")) {
+                    VER_FROM_SERVER = VER_FROM_SERVER.replace(":::minor", "");
+                    VER_FROM_SERVER = VER_FROM_SERVER.replace(":::major", "");
+                }
+            }
+
+            if (checkDifference(VER_APP, VER_FROM_SERVER)) {
+                MajorMarkerDetected = true;
+            }
         }
 
         return MajorMarkerDetected;

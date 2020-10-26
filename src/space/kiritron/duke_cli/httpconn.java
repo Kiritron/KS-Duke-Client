@@ -56,7 +56,7 @@ public class httpconn {
         if (!out.contains("ERROR")) {
             if (versionHandler.checkDifference(VER_APP, out)) {
                 if (checkMajor) {
-                    if (versionHandler.checkMajorMarker(out)) {
+                    if (versionHandler.checkMajorMarker(VER_APP, out)) {
                         ServerVersion = "DIFFERENCE_FINDED. MAJOR.";
                     } else {
                         ServerVersion = "DIFFERENCE_FINDED. MINOR.";

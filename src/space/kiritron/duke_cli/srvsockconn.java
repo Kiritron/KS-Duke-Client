@@ -48,7 +48,7 @@ public class srvsockconn {
             socket.close();
             if (versionHandler.checkDifference(VER_APP, ServerAnswer)) {
                 if (checkMajor) {
-                    if (versionHandler.checkMajorMarker(ServerAnswer)) {
+                    if (versionHandler.checkMajorMarker(VER_APP, ServerAnswer)) {
                         ServerVersion = "DIFFERENCE_FINDED. MAJOR.";
                     } else {
                         ServerVersion = "DIFFERENCE_FINDED. MINOR.";
